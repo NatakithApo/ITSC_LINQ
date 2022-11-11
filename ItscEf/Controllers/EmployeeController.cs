@@ -1,4 +1,5 @@
-﻿using ItscEf.Services;
+﻿using ItscEf.DatabaseModels;
+using ItscEf.Services;
 using ItscEf.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,12 @@ namespace ItscEf.Controllers
         public string GetEmployee()
         {
             return _employeeService.GetEmployeeName();
+        }
+
+        [HttpGet("positions")]
+        public async Task<List<TblPosition>> GetPositions([FromQuery] string? searchText, [FromQuery] int? id)
+        {
+            return await _employeeService.GetPositions("", 1);
         }
     }
 }
