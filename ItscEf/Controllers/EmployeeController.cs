@@ -28,5 +28,11 @@ namespace ItscEf.Controllers
         {
             return await _employeeService.GetPositions("", 1);
         }
+
+        [HttpGet("error")]
+        public void ThrowError()
+        {
+            _employeeService.ThrowError();
+        }
     }
 }

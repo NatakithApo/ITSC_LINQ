@@ -1,4 +1,5 @@
-﻿using ItscEf.DatabaseModels;
+﻿using CMU.Budget.API.Exceptions.HttpExceptions;
+using ItscEf.DatabaseModels;
 using ItscEf.Repositoies.Interface;
 using ItscEf.Services.Interface;
 
@@ -46,6 +47,11 @@ namespace ItscEf.Services
 
 
             return positions;
+        }
+
+        public void ThrowError()
+        {
+            throw new HttpBadRequestException("Invalid request data");
         }
     }
 }

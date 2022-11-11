@@ -1,15 +1,21 @@
+using CMU.Budget.API.Exceptions;
 using ItscEf.DatabaseModels;
 using ItscEf.Extensions;
 using ItscEf.Repositoies;
 using ItscEf.Repositoies.Interface;
 using ItscEf.Services;
 using ItscEf.Services.Interface;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 IConfiguration configuration = builder.Configuration;
+
+//Inject Custom Error
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter))).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DatabaseContext>
     (options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));

@@ -7,6 +7,6 @@ namespace ItscEf.Services.Interface
         public string GetEmployeeName();
         public Task<List<TblPosition>> GetPositions(string text, int? id);
 
-
+        public void ThrowError();
     }
 }
